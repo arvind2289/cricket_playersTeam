@@ -1,0 +1,82 @@
+{% extends 'base.html' %}  
+{% block content %}
+{% load static %}
+<div class="matchResult matchResultHead">
+   {{match_result}}
+</div>
+
+
+<div class="row mainContainer">
+   <div class="col-sm-12">
+      {% for score in scores %}
+      <div class="col-sm-6 ">
+         <div class="matchResult">
+            <div class="matchResult matchResultHead">
+               {{score.team__name}}
+            </div>
+            <table class="table table-hover">
+               <thead>
+                  <tr>
+                     <th></th>
+                     <th>Name</th>
+                     <th>4's</th>
+                     <th>6's</th>
+                     <th>Run</th>
+                     <th>Balls</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for player in score.bat_inning %}
+                  <tr>
+                     <td><img class="img-thumbnail_score scoreThumb" src="../media/{{player.player__image}}"></td>
+                     <td>{{player.player__firstName}} {{player.player__lastName}}</td>
+                     
+                     <td>{{player.four}}</td>
+                     <td>{{player.six}}</td>
+                     <td>{{player.total_run}}</td>
+                     <td>{{player.balls}}</td>
+                  </tr>
+                  {% endfor %}
+               </tbody>
+               <tfoot>
+                  <tr>
+                     <th colspan="4"></th>
+                     <th colspan="3">Total : {{score.final_score}}</th>
+                  </tr>
+               </tfoot>
+            </table>
+         </div>
+         <hr>
+      
+         <div class="matchResult">
+            <table class="table table-hover">
+               <thead>
+                  <tr>
+                     <th></th>
+                     <th>Name</th>
+                     <th>Overs</th>
+                     <th>Wickets</th>
+                     <th>Run</th>
+                  
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for player in score.ball_inning %}
+                  <tr>
+                     <td><img  class="img-thumbnail_score scoreThumb" src="../media/{{player.player__image}}"></td>
+                     <td>{{player.player__firstName}} {{player.player__lastName}}</td>
+                     <td>{{player.overs}}.{{player.subover}}</td>
+                     <td>{{player.wickets}}</td>
+                     <td>{{player.total_run}}</td>
+                    
+                  </tr>
+                  {% endfor %}
+               </tbody>
+               
+            </table>
+         </div>
+      </div>
+      {% endfor %}
+   </div>
+</div>
+{% endblock %}

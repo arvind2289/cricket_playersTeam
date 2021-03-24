@@ -1,0 +1,42 @@
+   
+{% extends 'base.html' %}  
+
+{% block content %}
+
+
+
+  <div class="row mainContainer">
+    <div class="col-sm-12">
+        {% for team in team_list %}
+          
+          <div class="col-sm-6 ">
+            <div class="row teamContainer">
+              <div class="col-sm-4 col-xs-4">
+                <img class="img-thumbnail" src="media/{{ team.logo }}">
+              </div>
+              <div class="col-sm-4 col-xs-4 teamName">
+                {{ team.name}}
+              </div>
+              <div class="col-sm-4 col-xs-4">
+                
+                <div class="col-sm-12 col-xs-12 details">
+                  Wins : {{ team.wins }}
+                </div>
+                <div class="col-sm-12 col-xs-12 details">
+                  Points : {{ team.pionts}}
+                </div>
+                <div class="col-sm-12 col-xs-12 details">
+                  <a href="playerlist/{{team.id}}/" > View player</a>
+                </div>
+              </div>
+            
+            </div>   
+          </div>
+        {% endfor %}
+
+        
+        
+  
+    </div>
+  </div>
+  {% endblock %}

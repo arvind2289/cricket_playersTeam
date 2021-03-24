@@ -1,0 +1,83 @@
+   
+{% extends 'base.html' %}  
+
+{% block content %}
+  <div class="row mainContainer">
+    <div class="col-sm-12">
+      <div class="col-sm-12 ">
+            <div class="row playerContainer">
+              <div class="col-sm-1 ">
+              </div>
+              <div class="col-sm-2  ">
+                Name
+              </div>
+              <div class="col-sm-1  ">
+                Jersey Number 
+              </div>
+              <div class="col-sm-1  ">
+                Country
+              </div>
+              <div class="col-sm-1  ">
+                Matches 
+              </div>
+              <div class="col-sm-1  ">
+                Runs
+              </div>
+              <div class="col-sm-1  ">
+                Highest 
+              </div>
+              <div class="col-sm-1  ">
+                 Fifties
+              </div>
+              <div class="col-sm-1  ">
+                 Hundreds 
+              </div>
+              <div class="col-sm-1  ">
+                 Team
+              </div>
+            </div>
+          </div>
+        {% for player in player_list %}
+          <div class="col-sm-12 ">
+            <div class="row playerContainer">
+              <div class="col-sm-1 ">
+                <img class="img-thumbnail" src="{{ player.image.url }}">
+              </div>
+              <div class="col-sm-2  ">
+                {{ player.firstName}} {{ player.lastName}}
+              </div>
+              <div class="col-sm-1  ">
+                {{ player.jerseyNumber}}
+              </div>
+              <div class="col-sm-1  ">
+                {{ player.country.name}}
+              </div>
+              <div class="col-sm-1  ">
+                {{ player.matches}}
+              </div>
+              <div class="col-sm-1  ">
+                {{ player.run}}
+              </div>
+              <div class="col-sm-1  ">
+                {{ player.highest}}
+              </div>
+              <div class="col-sm-1  ">
+                 {{ player.fifties}}
+              </div>
+              <div class="col-sm-1  ">
+                 {{ player.hundreds}}
+              </div>
+              <div class="col-sm-1  ">
+                {{player.team.name}}
+              </div>
+
+            </div>   
+          </div>
+        {% endfor %}
+
+        
+        
+  
+    </div>
+  </div>
+  {% endblock %}
